@@ -10,24 +10,24 @@ require_once '../config/paramtetros.php';
 <body>
 <div>
     <div><h1>INICIAR SESION</h1></div>
-    <form action="<?php base_url_front;?>" method="post">
+    <form action="<?php base_url_front;?>cliente/login" method="post">
         <label>email</label>
-        <input type="email">
+        <input type="email" name="email">
         <label>password</label>
-        <input type="password">
-        <input type="submit">
+        <input type="password" name="password">
+        <input type="submit" value="Iniciar Sesion">
     </form>
 </div>
 <div>
     <div><h1>REGISTRARSE</h1></div>
-    <form action="<?php base_url_front;?>cliente/registro" method="post">
-        <label>nombre</label>
+    <form action="<?php base_url_front;?>cliente/save" method="post">
+        <label>Nombre</label>
         <input type="text" name="nombre"/>
-        <label>email</label>
+        <label>Email</label>
         <input type="email" name="email"/>
-        <label>password</label>
+        <label>Password</label>
         <input type="password" name="password"/>
-        <input type="submit">
+        <input type="submit" value="registro">
     </form>
 </div>
 </body>
