@@ -1,3 +1,53 @@
 body{
     background-color: #00a2ff;
+    margin: 0;
+    padding: 0;
+}
+.clearFix{
+    clear: both;
+    float: none;
+}
+#body1_cliente{
+    background-color: #99ccff;
+}
+/* HEADER DE LA VISTA DEL INDEX DE UN CLIENTE */
+#header_cliente{
+    width: 100%;
+    color: crimson;
+    border: 1px solid black;
+}
+#nombre_cliente{
+    width: 50%;
+    color: crimson;
+    border: 1px solid black;
+    float: left;
+}
+#cerrar_sesion_cliente{
+    width: 49%;
+    color: crimson;..
+    cd ..
+    c
+    border: 1px solid black;
+    float: right;
+    height: 100%;
+}
+/* FIN DEL HEADER*/
+#lateral_cliente{
+    color: crimson;
+    border: 1px solid black;
+    width: 10%;
+    height: 700px;
+    float: left;
+}
+#body_cliente{
+    color: crimson;
+    border: 1px solid yellow;
+    width: 89%;
+    float: left;
+    height: 700px;
+}
+#footer_cliente{
+    float: left;
+    border: 1px solid red;
+    width: 100%;
 }
