@@ -42,7 +42,7 @@ class clienteController{
                     require_once 'views/cliente/index.php';
                 }
             }else{
-                echo "login incorrecto";
+                header('Location:'.base_url_front);
             }
 
 
@@ -53,5 +53,12 @@ class clienteController{
         $sesion->setIdCliente($cliente_ok['id']);
         $sesion->setEmailCliente($cliente_ok['email']);
         $sesion->sesionRegister();
+        $_SESSION['cliente']['id_sesion'] = $sesion->getId();
+    }
+    public function logOut(){
+        $sesion = new sesionesclientes();
+        $sesion->setId($_SESSION['cliente']['id_sesion']);
+        $sesion->sesionRegisterLogOut();
+        header('Location:'.base_url_front);
     }
 }

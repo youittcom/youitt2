@@ -5,11 +5,18 @@ function showError(){
     $error = new errorController();
     $error->index();
 }
+
+if(isset($_SESSION['cliente'])){
+     require_once './lyouts/headercliente.html';
+     require_once './lyouts/lateralcliente.html';
+    }
 if(isset($_GET['controller'])){
     $name_controller = $_GET['controller'].'Controller';
     if(class_exists($name_controller)){
         $controller = new $name_controller();
         if(isset($_GET['action']) && method_exists($controller,$_GET['action'])){
+            require_once './lyouts/headercliente.html';
+            require_once './lyouts/lateralcliente.html';
             $action = $_GET['action'];
             $controller->$action();
         }else{
@@ -18,6 +25,7 @@ if(isset($_GET['controller'])){
     }else{
         showError();
     }
+    require_once './lyouts/footercliente.html';
 }else{
     require_once 'login.php';
 }

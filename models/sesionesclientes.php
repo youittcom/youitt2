@@ -78,9 +78,29 @@ class sesionesclientes{
         $sql = "INSERT INTO sesiones_clientes VALUES (null,'{$this->id_cliente}','{$this->email_cliente}',CURRENT_TIMESTAMP(),NULL);";
         $query = $this->db->query($sql);
         if($query){
-            return true;
+            $this->getIdSession();
+            if($this->id != null){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function sesionRegisterLogOut(){
+        $sql = "UPDATE sesiones_clientes SET log_out = CURRENT_TIMESTAMP () WHERE id = '{$this->id}'";
+        $query = $this->db->query($sql);
+        unset($_SESSION['cliente']);
+        session_destroy();
+    }
+
+    public function getIdSession(){
+        $slq = "SELECT * FROM sesiones_clientes WHERE id_cliente = '{$this->id_cliente}' AND email_cliente = '{$this->email_cliente}' order by id DESC limit 1;";
+        $query = $this->db->query($slq);
+        if($query != null && $query->num_rows == 1) {
+            $sesion = mysqli_fetch_assoc($query);
+            $this->setId($sesion['id']);
         }else{
-            return false;
+            $this->id = null;
         }
     }
 }
