@@ -1,10 +1,10 @@
 <?php
 require_once '../config/db.php';
-class sesionesclientes{
+class sesionesusuarios{
 
     private $id;
-    private $id_cliente;
-    private $email_cliente;
+    private $id_usuario;
+    private $email_usuario;
     private $log_in;
     private $log_out;
     private $db;
@@ -18,14 +18,14 @@ class sesionesclientes{
         return $this->id;
     }
 
-    public function getIdCliente()
+    public function getIdUsuario()
     {
-        return $this->id_cliente;
+        return $this->id_usuario;
     }
 
-    public function getEmailCliente()
+    public function getEmailUsuario()
     {
-        return $this->email_cliente;
+        return $this->email_usuario;
     }
 
     public function getLogIn()
@@ -48,14 +48,14 @@ class sesionesclientes{
         $this->id = $id;
     }
 
-    public function setIdCliente($id_cliente): void
+    public function setIdUsuario($id_usuario): void
     {
-        $this->id_cliente = $id_cliente;
+        $this->id_usuario = $id_usuario;
     }
 
-    public function setEmailCliente($email_cliente): void
+    public function setEmailUsuario($email_usuario): void
     {
-        $this->email_cliente = $email_cliente;
+        $this->email_usuario = $email_usuario;
     }
 
     public function setLogIn($log_in): void
@@ -75,7 +75,7 @@ class sesionesclientes{
 
     public function sesionRegister(){
 
-        $sql = "INSERT INTO sesiones_clientes VALUES (null,'{$this->id_cliente}','{$this->email_cliente}',CURRENT_TIMESTAMP(),NULL);";
+        $sql = "INSERT INTO sesiones_usuarios VALUES (null,'{$this->id_usuario}','{$this->email_usuario}',CURRENT_TIMESTAMP(),NULL);";
         $query = $this->db->query($sql);
         if($query){
             $this->getIdSession();
@@ -87,14 +87,14 @@ class sesionesclientes{
     }
 
     public function sesionRegisterLogOut(){
-        $sql = "UPDATE sesiones_clientes SET log_out = CURRENT_TIMESTAMP () WHERE id = '{$this->id}'";
+        $sql = "UPDATE sesiones_usuarios SET log_out = CURRENT_TIMESTAMP () WHERE id = '{$this->id}'";
         $query = $this->db->query($sql);
-        unset($_SESSION['cliente']);
+        unset($_SESSION['usuario']);
         session_destroy();
     }
 
     public function getIdSession(){
-        $slq = "SELECT * FROM sesiones_clientes WHERE id_cliente = '{$this->id_cliente}' AND email_cliente = '{$this->email_cliente}' order by id DESC limit 1;";
+        $slq = "SELECT * FROM sesiones_usuarios WHERE id_usuario = '{$this->id_usuario}' AND email_usuario = '{$this->email_usuario}' order by id DESC limit 1;";
         $query = $this->db->query($slq);
         if($query != null && $query->num_rows == 1) {
             $sesion = mysqli_fetch_assoc($query);

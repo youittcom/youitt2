@@ -89,9 +89,9 @@ class cliente{
 
     }
     /*
-     * busqueda del email de un cliente
+     * busqueda del cliente por email
      */
-    public function findEmail($email){
+    public function findClientByEmail($email){
 
         $sql = "SELECT * FROM clientes WHERE email='{$email}';";
         $query = $this->db->query($sql);

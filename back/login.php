@@ -1,4 +1,5 @@
 <?php
+require_once '../config/paramtetros.php';
 ?>
 <!DOCTYPE HTML>
 <html lang="es">
@@ -8,11 +9,11 @@
 </head>
 <body>
 <div>
-    <form action="index.php" method="post">
+    <form action="<?php base_url_back;?>usuario/login" method="post">
         <label>email</label>
-        <input type="email">
+        <input type="email" name="email">
         <label>password</label>
-        <input type="password">
+        <input type="password" name="password">
         <input type="submit">
     </form>
 </div>

@@ -29,7 +29,7 @@ class clienteController{
         if(isset($_POST)){
             $cliente = new cliente();
             $cliente->setEmail($_POST['email']);
-            $cliente_ok = $cliente->findEmail($cliente->getEmail());
+            $cliente_ok = $cliente->findClientByEmail($cliente->getEmail());
             if($cliente_ok){
                 $cliente_ok = mysqli_fetch_assoc($cliente_ok);
                 $password_hash = $cliente_ok['password_hash'];
@@ -40,12 +40,13 @@ class clienteController{
                     $_SESSION['cliente'] = $cliente_ok;
                     $this->registroLogIn($cliente_ok);
                     require_once 'views/cliente/index.php';
+                }else{
+                    //devolver error de password
                 }
             }else{
+                //devolver error de email
                 header('Location:'.base_url_front);
             }
-
-
         }
     }
     public function registroLogIn($cliente_ok){
