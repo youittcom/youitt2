@@ -48,6 +48,10 @@ class clienteController{
                 header('Location:'.base_url_front);
             }
         }
+        else{
+            //devolver error de email
+            require_once '../index.php';
+        }
     }
     public function registroLogIn($cliente_ok){
         $sesion = new sesionesclientes();

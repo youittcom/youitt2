@@ -34,7 +34,7 @@ body{
 #lateral_usuario{
     color: crimson;
     border: 1px solid black;
-    width: 10%;
+    width: 12%;
     height: 700px;
     float: left;
 }
@@ -49,4 +49,52 @@ body{
     float: left;
     border: 1px solid red;
     width: 100%;
+}
+#tabla_productos{
+    border: 1px solid black;
+    float: left;
+    text-align: center;
+    margin-left: 31PX;
+}
+#fila_tabla_productos{
+    border: 1px solid black;
+
+}
+#columna_0{
+    border: 1px solid black;
+    width: 100px;
+    text-align: center;
+}
+#columna_1{
+    border: 1px solid black;
+    width: 200px;
+    text-align: center;
+}
+#columna_2{
+    border: 1px solid black;
+    width: 400px;
+    text-align: center;
+}
+#columna_3{
+    border: 1px solid black;
+    width: 100px;
+    text-align: center;
+}
+#cabecera_listado_productos{
+    float: left;
+    width: 87%;
+    text-align: center;
+}
+.boton {
+    border: 1px solid #2e518b; /*anchura, estilo y color borde*/
+    padding: 10px; /*espacio alrededor texto*/
+    background-color: #2e518b; /*color botón*/
+    color: #ffffff; /*color texto*/
+    text-decoration: none; /*decoración texto*/
+    text-transform: uppercase; /*capitalización texto*/
+    font-family: 'Helvetica', sans-serif; /*tipografía texto*/
+    border-radius: 50px; /*bordes redondos*/
+}
+#botones_productos{
+    margin-bottom: 15px;
 }

@@ -1,15 +1,17 @@
 <?php
+session_start();
+require_once '../config/paramtetros.php';
 require_once '../autoload.php';
-if(isset($_SESSION['usuario'])){
-    require_once './lyouts/headerusuario.html';
-    require_once './lyouts/lateralcliente.html';
-}
+require_once '../config/db.php';
+require_once '../autoload.php';
+
 if(isset($_GET['controller'])){
     $name_controller = $_GET['controller'].'Controller';
     if(class_exists($name_controller)){
         $controller = new $name_controller();
         if(isset($_GET['action']) && method_exists($controller,$_GET['action'])){
-            if($name_controller != 'registro'){
+            $action = $_GET['action'];
+            if($name_controller != 'registro' && $action != 'logOut'){
                 require_once './lyouts/headerusuario.html';
                 require_once './lyouts/lateralusuario.html';
                 $action = $_GET['action'];

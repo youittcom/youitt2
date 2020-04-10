@@ -12,7 +12,7 @@ if(isset($_GET['controller'])){
     if(class_exists($name_controller)){
         $controller = new $name_controller();
         if(isset($_GET['action']) && method_exists($controller,$_GET['action'])){
-            if($_GET['action'] != 'logout'){
+            if($_GET['action'] != 'logOut'){
                 require_once './lyouts/headercliente.html';
                 require_once './lyouts/lateralcliente.html';
             }
