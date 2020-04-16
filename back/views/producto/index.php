@@ -1,6 +1,7 @@
 <?php
 session_start();
 ?>
+<?php if(isset($_SESSION['usuario'])):?>
 <div id="cabecera_listado_productos">
     <h2>Productos cargados en el Sistema</h2>
 
@@ -28,5 +29,7 @@ session_start();
         }?>
 
     </table>
-
 </div>
+<?php else:?>
+    <div>error</div>
+<?php endif;?>

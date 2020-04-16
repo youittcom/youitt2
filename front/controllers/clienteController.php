@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../models/cliente.php';
+require_once '../models/despensa.php';
 require_once '../config/paramtetros.php';
 require_once '../models/sesionesclientes.php';
 class clienteController{
@@ -12,13 +13,23 @@ class clienteController{
     public function save(){
         if(isset($_POST)){
             $cliente = new cliente();
+            $despensa = new despensa();
             $cliente->setNombre($_POST['nombre']);
+            $cliente->setTelefono($_POST['telefono']);
             $cliente->setEmail($_POST['email']);
             $cliente->setPasswordHash($_POST['password']);
-            //guardamos los datos
             $save = $cliente->save();
+            //buscamos el id del cliente a partir del email
+            $cliente_ok = $cliente->findClientByEmail($cliente->getEmail());
+            $cliente_ok = mysqli_fetch_assoc($cliente_ok);
+            //damos de alta la despensa
+            $despensa->setIdCliente($cliente_ok['id']);
+            $despensa->save();
+            $despensa_id = $despensa->getDespensaByIdCliente();
+            $despensa_id = mysqli_fetch_assoc($despensa_id);
+            $cliente->updateIdDespensa($despensa_id['id'],$cliente_ok['id']);
             if($save){
-                header('Location:'.base_url_front);
+                $this->index();
             }else{
                 echo "error en el registro";
             }
