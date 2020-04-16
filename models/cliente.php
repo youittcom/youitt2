@@ -4,6 +4,7 @@ class cliente{
 
     private $id;
     private $nombre;
+    private $telefono;
     private $email;
     private $password_hash;
     private $date_register;
@@ -21,6 +22,11 @@ class cliente{
 
     public function getNombre(){
         return $this->nombre;
+    }
+
+    public function getTelefono()
+    {
+        return $this->telefono;
     }
 
     public function getEmail()
@@ -52,6 +58,12 @@ class cliente{
 
         $this->nombre = $this->db->real_escape_string($nombre);
     }
+
+    public function setTelefono($telefono): void
+    {
+        $this->telefono = $telefono;
+    }
+
     public function setEmail($email)
     {
         $this->email = $this->db->real_escape_string($email);
@@ -74,7 +86,7 @@ class cliente{
 
     public function save(){
 
-        $sql = "INSERT INTO clientes VALUES(null,'{$this->getNombre()}','{$this->getEmail()}','{$this->getPasswordHash()}',CURRENT_TIMESTAMP(),'null')";
+        $sql = "INSERT INTO clientes VALUES(null,'{$this->getNombre()}','{$this->getTelefono()}','{$this->getEmail()}','{$this->getPasswordHash()}',CURRENT_TIMESTAMP(),null,null)";
         $save = $this->db->query($sql);
         $result = false;
         if($save){
@@ -97,6 +109,18 @@ class cliente{
         $query = $this->db->query($sql);
         if($query->num_rows == 1){
             return $query;
+        }else{
+            return false;
+        }
+    }
+    /*
+     * actualizamos el id_despensa de un cliente
+     */
+    public function updateIdDespensa($despensa_id,$id_cliente){
+        $sql = "UPDATE clientes SET id_despensa= '$despensa_id' WHERE id = '$id_cliente';";
+        $query = $this->db->query($sql);
+        if($query){
+            return true;
         }else{
             return false;
         }

@@ -44,12 +44,20 @@ require_once '../config/paramtetros.php';
     <form class="p-5 bg-light" action="<?php base_url_front;?>cliente/save" method="post">
         <p>REGISTRARSE</p>
         <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" name="nombre">
+        </div>
+        <div class="form-group">
+            <label for="telefono">Telefono:</label>
+            <input type="text" class="form-control" id="telefono" name="telefono">
+        </div>
+        <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" class="form-control" placeholder="Enter email" id="email" name="email">
+            <input type="email" class="form-control" id="email" name="email">
         </div>
         <div class="form-group">
             <label for="pwd">Password:</label>
-            <input type="password" class="form-control" placeholder="Enter password" id="pwd" name="password">
+            <input type="password" class="form-control" id="pwd" name="password">
         </div>
         <button type="submit" class="btn btn-primary">Registro</button>
     </form>
