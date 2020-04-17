@@ -50,13 +50,18 @@ class clienteController{
                     unset($cliente_ok['password_hash']);
                     $_SESSION['cliente'] = $cliente_ok;
                     $this->registroLogIn($cliente_ok);
+                    require_once './lyouts/headercliente.html';
+                    require_once './lyouts/lateralcliente.html';
                     require_once 'views/cliente/index.php';
+                    require_once './lyouts/footercliente.html';
                 }else{
                     //devolver error de password
+                    $this->logOut();
                 }
             }else{
+
                 //devolver error de email
-                header('Location:'.base_url_front);
+                $this->logOut();
             }
         }
         else{
