@@ -1,11 +1,14 @@
 <?php
 session_start();
-require_once '../autoload.php';
-require_once '../config/db.php';
-function showError(){
-    $error = new errorController();
-    $error->index();
+if($_GET['controller'] != 'api'){
+    require_once '../autoload.php';
+    require_once '../config/db.php';
+    function showError(){
+        $error = new errorController();
+        $error->index();
+    }
 }
+
 
 if(isset($_GET['controller'])){
     $name_controller = $_GET['controller'].'Controller';
@@ -25,12 +28,21 @@ if(isset($_GET['controller'])){
             showError();
         }
     }else{
-        showError();
+        if($_GET['controller'] == 'api'){
+            echo "ok";
+        }else{
+            showError();
+        }
+
     }
 
 }else{
+    if($_GET['controller'] == 'api'){
+        echo "ok";
+    }else{
+        require_once 'login.php';
+    }
 
-    require_once 'login.php';
 }
 
 

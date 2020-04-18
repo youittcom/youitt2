@@ -99,4 +99,15 @@ class producto{
         }
     }
 
+    //query de un producto en concreto
+    public function buscarProducto(){
+        $sql = "SELECT * FROM productos WHERE codigo_barras = '{$this->getCodigoBarras()}';";
+        $query = $this->db->query($sql);
+        if($query != nnull && $query->num_rows == 1){
+            return $query;
+        }else{
+            return false;
+        }
+    }
+
 }
