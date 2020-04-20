@@ -6,6 +6,8 @@ class producto{
     private $codigo_barras;
     private $nombre;
     private $cantidad_recipiente;
+    private $medida;
+    private $categoria;
     private $fecha_alta;
     private $fecha_baja;
     private $db;
@@ -32,6 +34,14 @@ class producto{
     public function getCantidadRecipiente()
     {
         return $this->cantidad_recipiente;
+    }
+
+    public function getMedida(){
+        return $this->medida;
+    }
+
+    public function getCategoria(){
+        return $this->categoria;
     }
 
     public function getFechaAlta()
@@ -64,6 +74,12 @@ class producto{
         $this->cantidad_recipiente = $cantidad_recipiente;
     }
 
+    public function setMedida($medida){
+        $this->medida = $medida;
+    }
+    public function setCategoria($categoria){
+        $this->categoria = $categoria;
+    }
     public function setFechaAlta($fecha_alta): void
     {
         $this->fecha_alta = $fecha_alta;
@@ -90,7 +106,7 @@ class producto{
     }
 
     public function save(){
-        $sql = "INSERT INTO productos VALUES (null,'{$this->getCodigoBarras()}','{$this->getNombre()}','{$this->getCantidadRecipiente()}',CURRENT_TIMESTAMP());";
+        $sql = "INSERT INTO productos VALUES (null,'{$this->getCodigoBarras()}','{$this->getNombre()}','{$this->getCategoria()}','{$this->getCantidadRecipiente()}','{$this->getMedida()}',CURRENT_TIMESTAMP());";
         $query = $this->db->query($sql);
         if($query){
             return true;
@@ -103,8 +119,18 @@ class producto{
     public function buscarProducto(){
         $sql = "SELECT * FROM productos WHERE codigo_barras = '{$this->getCodigoBarras()}';";
         $query = $this->db->query($sql);
-        if($query != nnull && $query->num_rows == 1){
+        if($query != null && $query->num_rows == 1){
             return $query;
+        }else{
+            return false;
+        }
+    }
+
+    public function buscarProductoPorCodigoBarras(){
+        $sql = "SELECT * FROM productos WHERE codigo_barras = '{$this->getCodigoBarras()}';";
+        $query = $this->db->query($sql);
+        if($query != null && $query->num_rows == 1){
+            return true;
         }else{
             return false;
         }

@@ -14,8 +14,22 @@ session_start();
         <input type="text" name="codigo_barras">
         <label>Nombre</label>
         <input type="text" name="nombre_producto">
+        <select name="categoria">
+            <option value="aceite">Aceites</option>
+            <option value="aperitivos">Aperitivos</option>
+            <option value="arroces">Arroces</option>
+            <option value="bebidas">Bebidas</option>
+            <option value="caldos">Caldos</option>
+            <option value="pastas">Pastas</option>
+            <option value="salsas">Salsas</option>
+        </select>
         <label>Cantidad Recipiente</label>
         <input type="text" name="cantidad_recipiente">
+        <label>Medida</label>
+        <select name="medida">
+            <option value="l">litros</option>
+            <option value="g">Gramos</option>
+        </select>
         <input type="submit" name="guardar">
     </form>
 
