@@ -1,3 +1,4 @@
+<?php ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +10,7 @@
 <div id="header_cliente">
     <div id="nombre_cliente">
         <p>BIENVENIDO</p>
+        <p><?php print_r($_SESSION['cliente']['id'])?></p>
     </div>
     <div id="cerrar_sesion_cliente">
         <a href="<? echo base_url_front;?>cliente/logOut">cerrar sesion</a>

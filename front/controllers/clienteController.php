@@ -50,7 +50,7 @@ class clienteController{
                     unset($cliente_ok['password_hash']);
                     $_SESSION['cliente'] = $cliente_ok;
                     $this->registroLogIn($cliente_ok);
-                    require_once './lyouts/headercliente.html';
+                    require_once './lyouts/headercliente.php';
                     require_once './lyouts/lateralcliente.html';
                     require_once 'views/cliente/index.php';
                     require_once './lyouts/footercliente.html';

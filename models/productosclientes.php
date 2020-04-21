@@ -104,4 +104,19 @@ class productosclientes{
             return false;
         }
     }
+
+    public function obtenerProductosDeUnCliente(){
+        $sql = "SELECT * FROM productos_clientes WHERE id_cliente = '{$this->getIdCliente()}';";
+        $query = $this->db->query($sql);
+        $productos = array();
+        $contador = 0;
+        if($query->num_rows > 0){
+            while ($fila = $query->fetch_assoc()) {
+                $productos[$contador] = $fila;
+                $contador++;
+            }
+            return $productos;
+        }
+        return false;
+    }
 }
